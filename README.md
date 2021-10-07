@@ -1,6 +1,8 @@
 ## Webpack5+React17+Ts demo
 
-该学习了，发现最近好开源新项目都是使用 pnpm 重构，最近要给公司小伙伴聊聊优化与 Webpack 配置这些，做了这套 webpack 配置，同样的使用到了 pnpm，简直洁癖福音。。。
+该学习了，最近发现好开源新项目都是使用 pnpm 重构
+
+近期还要给公司小伙伴聊聊优化与 Webpack 配置这些，做了这套 webpack 配置，同样的使用到了 pnpm，简直洁癖福音。。。
 
 仓库地址：https://github.com/wulibaibao/pnpm-webpack-react
 
@@ -243,10 +245,9 @@ tips :
 1. contentBase 替换为 static
 2. historyApiFallback:true 解决 get error
 
-
 ### app.js
 
-增加app.js测试build打包后是否有问题
+增加 app.js 测试 build 打包后是否有问题
 
 担水不忘挖井人：
 Webpack 中文 https://webpack.docschina.org/
