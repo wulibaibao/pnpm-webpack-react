@@ -243,6 +243,11 @@ tips :
 1. contentBase 替换为 static
 2. historyApiFallback:true 解决 get error
 
+
+### app.js
+
+增加app.js测试build打包后是否有问题
+
 担水不忘挖井人：
 Webpack 中文 https://webpack.docschina.org/
 Webpack5.0 学习总结-基础篇 https://juejin.cn/post/6971743815434993671

@@ -1,9 +1,16 @@
 const express = require("express");
 const path = require("path");
+const proxy = require("./config/proxy");
+
+const { createProxyMiddleware } = require("http-proxy-middleware");
 
 const server = express();
 
 server.use("/", express.static("./build"));
+
+Object.keys(proxy).forEach((i) => {
+	server.use(i, createProxyMiddleware(proxy[i]));
+});
 
 server.get("*", (req, res) => {
 	res.sendFile(path.join(__dirname, "build/index.html"));
