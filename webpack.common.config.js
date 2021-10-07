@@ -5,7 +5,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 const chalk = require("chalk");
 const path = require("path");
-const { ProvidePlugin } = require("webpack");
 
 const getStyleLoaders = (cssOptions, preProcessor) => {
 	const loaders = [
@@ -40,26 +39,6 @@ module.exports = {
 
 	module: {
 		rules: [
-			// {
-			// 	test: /\.(t|j)sx?$/,
-			// 	// 注意需要在package.json配置browserslist，否则babel-loader不生效
-			// 	// js兼容处理 babel
-			// 	loader: "babel-loader", // 规则只使用一个loader时推荐写法
-			// 	options: {
-			// 		cacheDirectory: true, // 这是一个webpack优化点，使用缓存
-			// 	},
-			// 	include: path.resolve(__dirname, "src"),
-			// 	exclude: /node_modules/, // 这个也是webpack优化的点 exclude排除不需要编译的文件夹
-			// },
-			{
-				test: /\.tsx?$/,
-				loader: "esbuild-loader",
-				include: path.resolve(__dirname, "src"),
-				options: {
-					loader: "tsx", // Or 'ts' if you don't need tsx
-					target: "es2015",
-				},
-			},
 			{
 				test: /\.css$/,
 				use: getStyleLoaders({
@@ -82,13 +61,13 @@ module.exports = {
 				),
 				sideEffects: true,
 			},
-			/* 
-        Webpack5.0新增资源模块(asset module)，它是一种模块类型，允许使用资源文件（字体，图标等）而无需     配置额外 loader。支持以下四个配置
-        asset/resource 发送一个单独的文件并导出 URL。之前通过使用 file-loader 实现。
-        asset/inline 导出一个资源的 data URI。之前通过使用 url-loader 实现。
-        asset/source 导出资源的源代码。之前通过使用 raw-loader 实现。
-        asset 在导出一个 data URI 和发送一个单独的文件之间自动选择。之前通过使用 url-loader，并且配置资     源体积限制实现。
-        */
+/* 
+	Webpack5.0新增资源模块(asset module)，它是一种模块类型，允许使用资源文件（字体，图标等）而无需     配置额外 loader。支持以下四个配置
+	asset/resource 发送一个单独的文件并导出 URL。之前通过使用 file-loader 实现。
+	asset/inline 导出一个资源的 data URI。之前通过使用 url-loader 实现。
+	asset/source 导出资源的源代码。之前通过使用 raw-loader 实现。
+	asset 在导出一个 data URI 和发送一个单独的文件之间自动选择。之前通过使用 url-loader，并且配置资     源体积限制实现。
+*/	
 			// Webpack4使用file-loader实现
 			{
 				test: /\.(eot|svg|ttf|woff|)$/,
@@ -139,9 +118,6 @@ module.exports = {
 				chalk.green.bold(":percent") +
 				" (:elapsed seconds)",
 			clear: false,
-		}),
-		new ProvidePlugin({
-			React: "react",
 		}),
 	],
 

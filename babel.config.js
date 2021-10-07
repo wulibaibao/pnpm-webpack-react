@@ -10,20 +10,20 @@ var plugins = [
 ];
 
 module.exports = (api) => {
-	api.cache(true);
+	api.cache.using(() => process.env.NODE_ENV);
 
 	if (process.env.NODE_ENV !== "production") {
+		// plugins.push([
+		// 	"import",
+		// 	[
+		// 		{
+		// 			// 导入一个插件
+		// 			libraryName: "antd", // 暴露的库名
+		// 			style: true, // 直接将ants样式文件动态编译成行内样式插入，就不需要每次都导入
+		// 		},
+		// 	],
+		// ]);
 		plugins.push("react-refresh/babel");
-		plugins.push([
-			"import",
-			[
-				{
-					// 导入一个插件
-					libraryName: "antd", // 暴露的库名
-					style: true, // 直接将ants样式文件动态编译成行内样式插入，就不需要每次都导入
-				},
-			],
-		]);
 	}
 
 	return {

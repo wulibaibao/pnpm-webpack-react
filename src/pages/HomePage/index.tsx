@@ -12,7 +12,7 @@ const HomePage: React.FC = () => {
 	}, []);
 
 	if (loading) return <Loading />;
-	return <div className={styles.color}>this page is home page</div>;
+	return <div className={styles.color}>home page UI 8080</div>;
 };
 
 export default HomePage;

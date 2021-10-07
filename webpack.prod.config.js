@@ -1,4 +1,5 @@
 const { merge } = require("webpack-merge");
+const { ProvidePlugin } = require("webpack");
 
 // 该插件将CSS提取到单独的文件中。它会为每个chunk创造一个css文件。需配合loader一起使用
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -38,8 +39,25 @@ module.exports = merge(common, {
 			chunkFilename: "[id].[contenthash].css",
 		}),
 
+		new ProvidePlugin({
+			React: "react",
+		}),
 		new WebpackManifestPlugin(),
 	],
+
+	module: {
+		rules: [
+			{
+				test: /\.tsx?$/,
+				loader: "esbuild-loader",
+				include: path.resolve(__dirname, "src"),
+				options: {
+					loader: "tsx", // Or 'ts' if you don't need tsx
+					target: "es2015",
+				},
+			},
+		],
+	},
 
 	performance: false,
 
