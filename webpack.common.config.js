@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 const chalk = require("chalk");
 const path = require("path");
-const { ProvidePlugin } = require('webpack');
+const { ProvidePlugin } = require("webpack");
 
 const getStyleLoaders = (cssOptions, preProcessor) => {
 	const loaders = [
@@ -34,25 +34,10 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
 module.exports = {
 	entry: "./src/index.tsx",
 
-	output: {
-		// 输出文件目录（将来所有资源输出的公共目录，包括css和静态文件等等）
-		path: path.resolve(__dirname, "dist"), //默认
-		// 文件名称（指定名称+目录）
-		filename: "[name].js", // 默认
-		// 所有资源引入公共路径前缀，一般用于生产环境，小心使用
-		publicPath: "/",
-		/* 
-        非入口文件chunk的名称。所谓非入口即import动态导入形成的chunk或者optimization中的splitChunks提取的公共chunk
-        它支持和 filename 一致的内置变量
-        */
-		chunkFilename: "[contenthash:10].chunk.js",
-		clean: true, //打包前清空输出目录，相当于clean-webpack-plugin插件的作用。
-	},
-
 	cache: {
 		type: "filesystem",
 	},
-	
+
 	module: {
 		rules: [
 			// {
@@ -144,8 +129,7 @@ module.exports = {
 		// Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501
 		new HtmlWebpackPlugin({
 			title: "Webpack5+React17+Ts",
-			favicon:
-				path.resolve(__dirname, "src") + "/assets/React-Hook.png",
+			favicon: path.resolve(__dirname, "src") + "/assets/React-Hook.png",
 			template: path.resolve(__dirname, "public") + "/index.html", // template file
 			filename: "index.html", // output file
 		}),
@@ -157,7 +141,7 @@ module.exports = {
 			clear: false,
 		}),
 		new ProvidePlugin({
-			React: 'react',
+			React: "react",
 		}),
 	],
 
