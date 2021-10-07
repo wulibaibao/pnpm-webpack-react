@@ -40,6 +40,7 @@
     "hoist-non-react-statics": "^3.3.2",
     "html-entities": "^2.3.2",
     "html-webpack-plugin": "^5.3.2",
+    "http-proxy-middleware": "^2.0.1",
     "less": "^4.1.2",
     "less-loader": "^10.0.1",
     "mini-create-react-context": "^0.4.1",
