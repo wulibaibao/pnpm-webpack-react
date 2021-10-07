@@ -8,8 +8,9 @@ const TerserPlugin = require("terser-webpack-plugin");
 const common = require("./webpack.common.config");
 const path = require("path");
 const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
-// const { ESBuildMinifyPlugin } = require("esbuild-loader");
-// const publicPath = "/";
+
+const BundleAnalyzerPlugin =
+	require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = merge(common, {
 	mode: "production",
@@ -43,6 +44,8 @@ module.exports = merge(common, {
 			React: "react",
 		}),
 		new WebpackManifestPlugin(),
+		// 开启 BundleAnalyzerPlugin
+		new BundleAnalyzerPlugin(),
 	],
 
 	module: {
