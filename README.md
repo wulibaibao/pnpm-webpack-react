@@ -13,8 +13,7 @@
 3. react 17
 4. Ts（较少配置）
 
-支持相关
-webpack 配置相关：
+支持
 
 1. esbuild-loader 替换 babel-loader
 2. less modules 配置
@@ -22,6 +21,7 @@ webpack 配置相关：
 4. externals cdn（后续添加）
 5. 实时刷新
 6. 路由+代理 配置分离
+7. antd 支持（按需加载）
 
 > 为什么使用 pnpm
 
@@ -37,8 +37,15 @@ webpack 配置相关：
 开始：
 `pnpm start`
 
+http://localhost:8080
+
 构建：
 `pnpm build`
+
+### router 配置分离
+
+config 文件夹 routes.ts 文件是页面路由文件，使用 lazy 方式引入，
+模拟 umi 可配是否需要 layout，但是需要对 pages/router.tsx 做一些改动
 
 ### esbuild-loader 替换 babel-loader
 
@@ -240,7 +247,8 @@ module.exports = (api) => {
 
 ### webpack-plugin-serve + react-refresh-webpack-plugin
 
-ts-refresh有点问题，换掉了配置
+ts-refresh 有点问题，换掉了配置
+
 ```js
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const { WebpackPluginServe: ServePlugin } = require("webpack-plugin-serve");
@@ -266,7 +274,7 @@ module.exports = {
 };
 ```
 
-使用devServer配置 tips :
+使用 devServer 配置 tips :
 
 1. contentBase 替换为 static
 2. historyApiFallback:true 解决 get error
