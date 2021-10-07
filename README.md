@@ -238,9 +238,35 @@ module.exports = (api) => {
 };
 ```
 
-### devServer
+### webpack-plugin-serve + react-refresh-webpack-plugin
 
-tips :
+ts-refresh有点问题，换掉了配置
+```js
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const { WebpackPluginServe: ServePlugin } = require("webpack-plugin-serve");
+
+module.exports = {
+	plugins: [
+		new ServePlugin({
+			port: 5000,
+			static: path.resolve(__dirname, "dist"),
+			status: false,
+			middleware: (app, builtins) => {
+				Object.keys(proxy).forEach((i) => {
+					app.use(builtins.proxy(i, proxy[i]));
+				});
+			},
+		}),
+		new ReactRefreshWebpackPlugin({
+			overlay: {
+				sockIntegration: "wps",
+			},
+		}),
+	],
+};
+```
+
+使用devServer配置 tips :
 
 1. contentBase 替换为 static
 2. historyApiFallback:true 解决 get error
@@ -251,7 +277,7 @@ tips :
 
 吃水不忘挖井人：
 
-Webpack 中文 https://webpack.docschina.org/
-Webpack5.0 学习总结-基础篇 https://juejin.cn/post/6971743815434993671
-从零搭建 Webpack5-react 脚手架(附源码) https://segmentfault.com/a/1190000040427502
-「超详细 React 项目搭建教程二」集成 Webpack5/React17 https://juejin.cn/post/6947874258324946952
+Webpack 中文 ： https://webpack.docschina.org/
+Webpack5.0 学习总结-基础篇 ： https://juejin.cn/post/6971743815434993671
+从零搭建 Webpack5-react 脚手架(附源码) ： https://segmentfault.com/a/1190000040427502
+「超详细 React 项目搭建教程二」集成 Webpack5/React17 ： https://juejin.cn/post/6947874258324946952
