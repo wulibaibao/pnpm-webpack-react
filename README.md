@@ -249,7 +249,8 @@ tips :
 
 增加 app.js 测试 build 打包后是否有问题
 
-担水不忘挖井人：
+吃水不忘挖井人：
+
 Webpack 中文 https://webpack.docschina.org/
 Webpack5.0 学习总结-基础篇 https://juejin.cn/post/6971743815434993671
 从零搭建 Webpack5-react 脚手架(附源码) https://segmentfault.com/a/1190000040427502
