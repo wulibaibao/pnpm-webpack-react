@@ -2,6 +2,8 @@
 
 该学习了，发现最近好开源新项目都是使用 pnpm 重构，最近要给公司小伙伴聊聊优化与 Webpack 配置这些，做了这套 webpack 配置，同样的使用到了 pnpm，简直洁癖福音。。。
 
+仓库地址：https://github.com/wulibaibao/pnpm-webpack-react
+
 目前使用到的：
 
 1. pnpm
@@ -138,6 +140,9 @@ module.exports = {
 						importLoaders: 2,
 						sourceMap: process.env.NODE_ENV !== "production",
 						modules: {
+							/*
+                                这里就遇到个问题，打包后classNanme成了hash，需要改动localIdentName
+                            */
 							localIdentName: "[local]",
 						},
 					},
@@ -239,5 +244,7 @@ tips :
 2. historyApiFallback:true 解决 get error
 
 担水不忘挖井人：
-
-> https://juejin.cn/post/6971743815434993671
+Webpack 中文 https://webpack.docschina.org/
+Webpack5.0 学习总结-基础篇 https://juejin.cn/post/6971743815434993671
+从零搭建 Webpack5-react 脚手架(附源码) https://segmentfault.com/a/1190000040427502
+「超详细 React 项目搭建教程二」集成 Webpack5/React17 https://juejin.cn/post/6947874258324946952
