@@ -1,10 +1,8 @@
 ## Webpack5+React17+Ts demo
 
-该学习了，最近发现好开源新项目都是使用 pnpm 重构
+该学习了，最近发现好开源新项目都是使用 pnpm 重构,
 
-近期还要给公司小伙伴聊聊优化与 Webpack 配置这些，做了这套 webpack 配置，同样的使用到了 pnpm，简直洁癖福音。。。
-
-仓库地址：https://github.com/wulibaibao/pnpm-webpack-react
+试着做了这套 webpack 配置，同样的使用到了 pnpm，虽然有坑，但简直洁癖福音。。。
 
 目前使用到的：
 
@@ -187,8 +185,6 @@ bable 使用该文件规则，可以方便插入环境变量，production 的时
 
 具体操作
 
-参考：https://github.com/wulibaibao/react-antd-demo/blob/master/config/webpack.config.prod.js
-
 bable.config.js
 
 ```js
@@ -214,8 +210,6 @@ module.exports = (api) => {
 ```
 
 ### 实时刷新
-
-参考：https://segmentfault.com/a/1190000040427502
 
 webpack.dev.config.js
 
@@ -284,9 +278,28 @@ module.exports = {
 
 增加 app.js 测试 build 打包后是否有问题
 
-吃水不忘挖井人：
+参考：
 
-Webpack 中文 ： https://webpack.docschina.org/
-Webpack5.0 学习总结-基础篇 ： https://juejin.cn/post/6971743815434993671
-从零搭建 Webpack5-react 脚手架(附源码) ： https://segmentfault.com/a/1190000040427502
-「超详细 React 项目搭建教程二」集成 Webpack5/React17 ： https://juejin.cn/post/6947874258324946952
+> [Webpack 中文 ](https://webpack.docschina.org/)
+
+> [Webpack5.0 学习总结-基础篇](https://juejin.cn/post/6971743815434993671)
+
+> [从零搭建 Webpack5-react 脚手架(附源码)](https://segmentfault.com/a/1190000040427502)
+
+> [「超详细 React 项目搭建教程二」集成 Webpack5/React17](https://juejin.cn/post/6947874258324946952)
+
+// externalsType: "script",
+// externals: {
+// 	react: [
+// 		"https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.production.min.js",
+// 		"React",
+// 	],
+// 	"react-dom": [
+// 		"https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js",
+// 		"ReactDom",
+// 	],
+// 	"react-router-dom": [
+// 		"https://cdn.jsdelivr.net/npm/react-router-dom@5.3.0/umd/react-router-dom.min.js",
+// 		"ReactRouterDOM",
+// 	],
+// },

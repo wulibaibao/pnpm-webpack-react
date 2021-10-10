@@ -4,7 +4,8 @@ const { merge } = require("webpack-merge");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const ReactRefreshTypeScript = require("react-refresh-typescript");
 const { WebpackPluginServe: ServePlugin } = require("webpack-plugin-serve");
-
+// HtmlWebpackPlugin帮助你创建html文件，并自动引入打包输出的bundles文件。支持html压缩。
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = merge(common, {
@@ -54,6 +55,11 @@ module.exports = merge(common, {
 			overlay: {
 				sockIntegration: "wps",
 			},
+		}),
+		new HtmlWebpackPlugin({
+			
+			template: path.resolve(__dirname, "public") + "/index.html", // template file
+			filename: "index.html", // output file
 		}),
 	],
 });

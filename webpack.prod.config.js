@@ -1,6 +1,8 @@
 const { merge } = require("webpack-merge");
 const { ProvidePlugin } = require("webpack");
 
+// HtmlWebpackPlugin帮助你创建html文件，并自动引入打包输出的bundles文件。支持html压缩。
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 // 该插件将CSS提取到单独的文件中。它会为每个chunk创造一个css文件。需配合loader一起使用
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
@@ -45,8 +47,28 @@ module.exports = merge(common, {
 		}),
 		new WebpackManifestPlugin(),
 		// 开启 BundleAnalyzerPlugin
-		new BundleAnalyzerPlugin(),
+		// new BundleAnalyzerPlugin(),
+		new HtmlWebpackPlugin({
+			title: "Webpack5+React17+Ts",
+			scriptLoading: "blocking",
+			inject: "body",
+			favicon: path.resolve(__dirname, "src") + "/assets/React-Hook.png",
+			template: path.resolve(__dirname, "public") + "/index.html", // template file
+			filename: "index.html", // output file
+			scriptCdn: [
+				"https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.production.min.js",
+				"https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js",
+				"https://cdn.jsdelivr.net/npm/react-router-dom@5.3.0/umd/react-router-dom.min.js",
+			],
+		}),
 	],
+
+
+	externals: {
+		react: "React",
+		"React-dom": "ReactDom",
+		"react-router-dom": "ReactRouterDOM",
+	},
 
 	module: {
 		rules: [

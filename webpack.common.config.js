@@ -1,5 +1,4 @@
-// HtmlWebpackPlugin帮助你创建html文件，并自动引入打包输出的bundles文件。支持html压缩。
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 // 该插件将CSS提取到单独的文件中。它会为每个chunk创造一个css文件。需配合loader一起使用
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const ProgressBarPlugin = require("progress-bar-webpack-plugin");
@@ -113,12 +112,7 @@ module.exports = {
 
 		// Generates an HTML file from a template
 		// Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501
-		new HtmlWebpackPlugin({
-			title: "Webpack5+React17+Ts",
-			favicon: path.resolve(__dirname, "src") + "/assets/React-Hook.png",
-			template: path.resolve(__dirname, "public") + "/index.html", // template file
-			filename: "index.html", // output file
-		}),
+		
 		new ProgressBarPlugin({
 			format:
 				"  build [:bar] " +

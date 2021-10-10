@@ -146,5 +146,8 @@
 				<div id="loader"></div>
 			</div>
 		</div>
+		<% htmlWebpackPlugin.options.scriptCdn && htmlWebpackPlugin.options.scriptCdn.forEach(function(cdn){ %>
+		<script src="<%= cdn %>"></script>
+		<% }) %>
 	</body>
 </html>
