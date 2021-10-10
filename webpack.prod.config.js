@@ -47,7 +47,7 @@ module.exports = merge(common, {
 		}),
 		new WebpackManifestPlugin(),
 		// 开启 BundleAnalyzerPlugin
-		// new BundleAnalyzerPlugin(),
+		new BundleAnalyzerPlugin(),
 		new HtmlWebpackPlugin({
 			title: "Webpack5+React17+Ts",
 			scriptLoading: "blocking",
@@ -59,15 +59,18 @@ module.exports = merge(common, {
 				"https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.production.min.js",
 				"https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js",
 				"https://cdn.jsdelivr.net/npm/react-router-dom@5.3.0/umd/react-router-dom.min.js",
+				// 'https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js',
+				// 'https://cdn.jsdelivr.net/npm/antd@4.16.13/dist/antd.js',
 			],
 		}),
 	],
 
-
 	externals: {
 		react: "React",
-		"React-dom": "ReactDom",
+		"react-dom": "ReactDOM",
 		"react-router-dom": "ReactRouterDOM",
+		// moment : 'momnet',
+		// antd : 'antd',
 	},
 
 	module: {
