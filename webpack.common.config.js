@@ -67,13 +67,6 @@ module.exports = {
 				),
 				sideEffects: true,
 			},
-			/* 
-	Webpack5.0新增资源模块(asset module)，它是一种模块类型，允许使用资源文件（字体，图标等）而无需     配置额外 loader。支持以下四个配置
-	asset/resource 发送一个单独的文件并导出 URL。之前通过使用 file-loader 实现。
-	asset/inline 导出一个资源的 data URI。之前通过使用 url-loader 实现。
-	asset/source 导出资源的源代码。之前通过使用 raw-loader 实现。
-	asset 在导出一个 data URI 和发送一个单独的文件之间自动选择。之前通过使用 url-loader，并且配置资     源体积限制实现。
-*/
 			// Webpack4使用file-loader实现
 			{
 				test: /\.(eot|svg|ttf|woff|)$/,
@@ -114,11 +107,8 @@ module.exports = {
 		// Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501
 		
 		new ProgressBarPlugin({
-			format:
-				"  build [:bar] " +
-				chalk.green.bold(":percent") +
-				" (:elapsed seconds)",
-			clear: false,
+			format: ` build [:bar] ${chalk.green.bold(":percent")}  (:elapsed seconds)`,
+			total : 3,
 		}),
 	],
 
